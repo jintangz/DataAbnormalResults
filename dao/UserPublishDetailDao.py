@@ -21,6 +21,7 @@ class UserPublishDetailDao(UserPublishDao):
         sql = f"""select * from {self._database}.{self._table_name} 
                   where {self._time_col} between {self._start_date} and {self._end_date}"""
         self._data: DataFrame = self._hiveRunner.query(sql)
+        self._data[self._dim_cols] = self._data[self._dim_cols].fillna('未知')
         return self._data
 
     def get_data(self)->DataFrame:

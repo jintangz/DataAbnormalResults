@@ -2,6 +2,8 @@ from abc import ABCMeta, abstractmethod
 import pprint
 from typing import AnyStr, Dict, List
 import yaml
+from pandas import DataFrame
+
 from myutils.HiveRunner import HiveRunner
 
 
@@ -23,19 +25,19 @@ class UserPublishDao(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_data(self):
+    def get_data(self)->DataFrame:
         pass
 
     @abstractmethod
-    def get_time_col(self):
+    def get_time_col(self)->AnyStr:
         pass
 
     @abstractmethod
-    def get_dim_cols(self):
+    def get_dim_cols(self)->List[AnyStr]:
         pass
 
     @abstractmethod
-    def get_measure_cols(self):
+    def get_measure_cols(self)->List[AnyStr]:
         pass
 
 
