@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import pprint
-from typing import AnyStr, Dict
+from typing import AnyStr, Dict, List
 import yaml
 from myutils.HiveRunner import HiveRunner
 
@@ -13,8 +13,8 @@ class UserPublishDao(metaclass=ABCMeta):
         self._hiveRunner = hiveRunner
         self._config: Dict = yaml.safe_load(open(yaml_file_path, encoding='utf8'))
         self._time_col: AnyStr = config.get('time_col')
-        self._dim_cols: AnyStr = config.get('dim_cols')
-        self._measure_cols: AnyStr = config.get('measure_cols')
+        self._dim_cols: List[AnyStr] = config.get('dim_cols')
+        self._measure_cols: List[AnyStr] = config.get('measure_cols')
         self._start_date: AnyStr = config.get('start_date')
         self._end_date: AnyStr = config.get('end_date')
 

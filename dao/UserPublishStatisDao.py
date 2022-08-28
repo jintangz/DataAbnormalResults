@@ -1,5 +1,5 @@
 import pprint
-from typing import AnyStr, Dict
+from typing import AnyStr, Dict, List
 import yaml
 from pandas import DataFrame
 
@@ -16,22 +16,22 @@ class UserPublishStatisDao(UserPublishDao):
         self._table_name: AnyStr = self._config.get('statis_table_name')
         self.query()
 
-    def query(self):
+    def query(self)->DataFrame:
         sql = f"""select * from {self._database}.{self._table_name} 
                   where {self._time_col} between {self._start_date} and {self._end_date}"""
         self._data: DataFrame = self._hiveRunner.query(sql)
         return self._data
 
-    def get_data(self):
+    def get_data(self)->DataFrame:
         return self._data
 
-    def get_time_col(self):
+    def get_time_col(self)->AnyStr:
         return self._time_col
 
-    def get_dim_cols(self):
+    def get_dim_cols(self)->List[AnyStr]:
         return self._dim_cols
 
-    def get_measure_cols(self):
+    def get_measure_cols(self)->List[AnyStr]:
         return self._measure_cols
 
 if __name__ == '__main__':
