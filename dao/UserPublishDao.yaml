@@ -1,0 +1,26 @@
+#表格存储的数据库
+detail_database: bi_inter
+statis_database: bi_stat
+#表格名称
+detail_table_name: mm_cmnt_d_publish_log
+statis_table_name: mm_cmnt_sd_publish_daily
+
+#数据查询起始日期
+start_date: '2022-07-08'
+#数据查询终止日期
+end_date: '2022-07-25'
+#日期列
+time_col: pt_date
+#维度列
+dim_cols:
+  - region
+  - user_type
+  - nnq_type
+  - active_group
+  - join_group
+  - user_state
+  - client_type
+#度量列
+measure_cols:
+  - publish_cnt
+
